@@ -19,14 +19,16 @@ class Card extends Component {
 
   render() {
     return (
-      <div
-      className="text-center card my-3 col-12 border-0" 
-      style={{
-        borderRadius: 35
-      }}>
-        <div className="card-body row align-items-center">
-          <h3 className="col-12 my-0" style={{fontSize: 20, color: '#1A1053'}}>{this.state.title}</h3>
-          <h1 className="col-12 my-0" style={{fontSize: 45, color: this.state.color}}>{this.state.value}</h1>
+      <div className="px-4 col-lg-3">
+        <div
+        className="card text-center my-3 row border-0" 
+        style={{
+          borderRadius: 35
+        }}>
+          <div className="card-body row align-items-center">
+            <h3 className="col-12 my-0" style={{fontSize: 20, color: '#1A1053'}}>{this.state.title}</h3>
+            <h1 className="col-12 my-0" style={{fontSize: 45, color: this.state.color}}>{this.state.value}</h1>
+          </div>
         </div>
       </div>
     );

@@ -43,34 +43,26 @@ class Main extends Component {
     return (
       <div style={{backgroundColor: '#F1F3FB'}} className="col-12 py-3 px-0 mx-0">
         <div className="row col-12 mx-auto">
-          <div className="px-2 col-lg-3">
-            <Card 
-            ref={this.aggregatedCard}
-            title="Aggregated Confirmed" 
-            value={0}
-            color='#F9345E'/>
-          </div>
-          <div className="px-2 col-lg-3">
-            <Card 
-            ref={this.activeCard}
-            title="Active Confirmed" 
-            value={0}
-            color='#FA6400'/>
-          </div>
-          <div className="px-2 col-lg-3">
-            <Card 
-            ref={this.recoveredCard}
-            title="Recovered" 
-            value={0}
-            color='#1CB142'/>
-          </div>
-          <div className="px-2 col-lg-3">
-            <Card 
-            ref={this.deathsCard}
-            title="Death" 
-            value={0}
-            color='#6236FF'/>
-          </div>
+          <Card 
+          ref={this.aggregatedCard}
+          title="Aggregated Confirmed" 
+          value={0}
+          color='#F9345E'/>
+          <Card 
+          ref={this.activeCard}
+          title="Active Confirmed" 
+          value={0}
+          color='#FA6400'/>
+          <Card 
+          ref={this.recoveredCard}
+          title="Recovered" 
+          value={0}
+          color='#1CB142'/>
+          <Card 
+          ref={this.deathsCard}
+          title="Death" 
+          value={0}
+          color='#6236FF'/>
         </div>
         <div style={{borderRadius: 35}} className="countries-container mt-2 mx-4">
           <div className="row px-4 py-3 align-items-center">
