@@ -1,5 +1,4 @@
 .countries-container {
-    height: 70vh;
     -webkit-box-shadow: 0px 1px 111px -71px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 1px 111px -71px rgba(0,0,0,0.75);
     box-shadow: 0px 1px 111px -71px rgba(0,0,0,0.75);
@@ -8,7 +7,7 @@
 
 .scrollbar {
 	float: left;
-	max-height: 90%;
+	max-height: 80vh;
 	overflow-y: scroll;
 }
 

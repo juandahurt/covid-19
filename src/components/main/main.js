@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Card from '../card';
 import { getSummary } from '../../actions/covidActions';
+import Map from '../map';
 
 import './main.css';
 
@@ -29,10 +30,12 @@ class Main extends Component {
       this.recoveredCard.current.changeValue(res.Global.TotalRecovered);
       this.deathsCard.current.changeValue(res.Global.TotalDeaths);
 
-      res.Countries.sort((c1, c2) => c2.TotalConfirmed - c1.TotalConfirmed);
+      await res.Countries.sort((c1, c2) => c2.TotalConfirmed - c1.TotalConfirmed);
       this.setState({data: {countries: res.Countries}});
+
+      this.map.current.drawCases(this.state.data);
     } catch (err) {
-      console.log(err.error);
+      console.log(err.message);
     }
   }
 
@@ -70,8 +73,8 @@ class Main extends Component {
           </div>
         </div>
         <div style={{borderRadius: 35}} className="countries-container mt-2 mx-4">
-          <div className="row h-100 px-4">
-            <div className="scrollbar col-lg-4 my-4" id="scrollbar-style">
+          <div className="row px-4 py-3 align-items-center">
+            <div className="scrollbar col-lg-4 my-3" id="scrollbar-style">
               {this.state.data.countries.map(c => {
                 return <div className="row">
                   <h6 className="col-4 text-right pt-1" style={{color: '#1A1053'}}>{new Intl.NumberFormat().format(c.TotalConfirmed)}</h6>
@@ -79,8 +82,8 @@ class Main extends Component {
                 </div>
               })}
             </div>
-            <div className="col-lg-8">
-              {/* TODO: Add the map of the world! */}
+            <div className="col-lg-8 pl-4">
+              <Map ref={this.map}/>
             </div>
           </div>
         </div>
