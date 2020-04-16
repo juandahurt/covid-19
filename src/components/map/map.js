@@ -8,7 +8,11 @@ import './map.css'
 class Map extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: null }
+    this.state = { 
+      data: null,
+      mapWidth: 2483,
+      mapHeight: 1193
+    }
     
     this.canvas = React.createRef();
     this.img = React.createRef();
@@ -25,7 +29,20 @@ class Map extends Component {
 
     img.onload = () => {
       ctx.drawImage(img, 0, 0);
+      this.clearMap();
     }
+  }
+
+  clearMap() {
+    const ctx = this.canvas.current.getContext("2d");
+    var imgData = ctx.getImageData(0, 0, this.state.mapWidth, this.state.mapHeight);
+    var data = imgData.data;
+    for (var i=0; i<data.length; i++) {
+      if (data[i] > 0 && data[i] < 255) {
+        data[i] = 255;
+      }
+    }
+    ctx.putImageData(imgData,0,0);
   }
 
   async loadCountriesFile() {
@@ -47,25 +64,25 @@ class Map extends Component {
   drawCasesAt(lon, lat, cases) {
     const ctx = this.canvas.current.getContext("2d");
     ctx.beginPath();
-    let zoom = 2;
-    let x = this.getX(lon, zoom) + (2483 / 2) - 40;
-    let y = this.getY(lat, zoom) + (1193 / 2) - 420;
-    ctx.ellipse(x, y, cases * 0.0002, cases * 0.0002, 0, 0, Math.PI * 2);
-    ctx.fillStyle = "#CD372D";
+    let x = this.getX(lon) + (2483 / 2) - 40;
+    let y = this.getY(lat) - 420;
+    let r = cases * 0.0018;
+    if (r > 65) { r = cases * 0.0002; }
+    ctx.fillStyle = "#FA6400";
+    ctx.globalAlpha = 0.57;
+    ctx.ellipse(x, y, r, r, 0, 0, Math.PI * 2);
     ctx.closePath();
     ctx.fill();
   }
 
-  getX(lon, zoom) {
-    // lon = lon * (Math.PI / 180);
-    // var a = (256 / Math.PI) * Math.pow(2, zoom);
-    // var b = lon + Math.PI;
-    // return a * b;
-    return (lon + 180) * (2483 / 360);
+  getX(lon) {
+    return (lon + 180) * (this.state.mapWidth / 360);
   }
   
-  getY(lat, zoom) {
-    return (1193/2)-(2483* Math.log(Math.tan((Math.PI/4)+((lat*Math.PI/180)/2)))/(2*Math.PI))
+  getY(lat) {
+    let a = this.state.mapHeight;
+    let b = (Math.PI / 4 ) + (lat * Math.PI / 180) / 2;
+    return a - (this.state.mapWidth * Math.log(Math.tan(b)) / (2 * Math.PI))
   }
 
   render() {

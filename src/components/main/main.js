@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FaHeart } from 'react-icons/fa';
 
 import Card from '../card';
 import { getSummary } from '../../actions/covidActions';
@@ -42,6 +43,10 @@ class Main extends Component {
   render() {
     return (
       <div style={{backgroundColor: '#F1F3FB'}} className="col-12 py-3 px-0 mx-0">
+        <div className="row pl-5">
+          <h2 style={{color: '#1A1053', fontSize: 30}}>Covid-19</h2>
+          <span style={{fontSize: 25}} className="text-muted ml-3">Global Trend</span>
+        </div>
         <div className="row col-12 mx-auto">
           <Card 
           ref={this.aggregatedCard}
@@ -78,6 +83,11 @@ class Main extends Component {
               <Map ref={this.map}/>
             </div>
           </div>
+        </div>
+        <div className="text-center pt-4">
+          <code className="text-muted" style={{color: 'black'}}>
+            Made with <FaHeart /> by <a href="https://github.com/juandahurt">juandahurt</a>
+          </code>
         </div>
       </div>
     );
