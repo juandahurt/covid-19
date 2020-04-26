@@ -5,6 +5,10 @@
     background-color: white;
 }
 
+.country:hover {
+    background-color: #1A1053;
+}
+
 .scrollbar {
 	float: left;
 	max-height: 80vh;

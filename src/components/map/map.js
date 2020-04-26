@@ -26,11 +26,9 @@ class Map extends Component {
   drawWorldMap() {
     const ctx = this.canvas.current.getContext("2d");
     const img = this.img.current;
-
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0);
-      this.clearMap();
-    }
+  
+    ctx.drawImage(img, 0, 0);
+    this.clearMap();
   }
 
   clearMap() {
@@ -51,25 +49,38 @@ class Map extends Component {
   }
 
   drawCases(data) {
+    let ctx = this.canvas.current.getContext("2d");
+
+    ctx.clearRect(0, 0, this.canvas.current.width, this.canvas.current.height);
+    this.drawWorldMap(); // It only draws the map when this function is called!
     data.countries.map(c => {
       let countryGeoData = this.state.data.find(element => { return element.country === c.CountryCode });
       if (countryGeoData) {
         let lat = countryGeoData.latitude;
         let lon = countryGeoData.longitude;
-        this.drawCasesAt(lon, lat, c.TotalConfirmed)
+        this.drawCasesAt(lon, lat, c.TotalConfirmed, c.selected)
       }
     });
   }
 
-  drawCasesAt(lon, lat, cases) {
+  drawCasesAt(lon, lat, cases, selected) {
     const ctx = this.canvas.current.getContext("2d");
     ctx.beginPath();
     let x = this.getX(lon) + (2483 / 2) - 40;
     let y = this.getY(lat) - 420;
     let r = cases * 0.0018;
+
     if (r > 65) { r = cases * 0.0002; }
-    ctx.fillStyle = "#FA6400";
-    ctx.globalAlpha = 0.57;
+    if (selected) { 
+      ctx.fillStyle = "#F9345E";
+      ctx.globalAlpha = 0.57; 
+    }
+    else { 
+      ctx.fillStyle = "#FA6400"; 
+      ctx.globalAlpha = 0.27;
+    }
+    
+    
     ctx.ellipse(x, y, r, r, 0, 0, Math.PI * 2);
     ctx.closePath();
     ctx.fill();
