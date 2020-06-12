@@ -68,9 +68,9 @@ class Map extends Component {
     ctx.beginPath();
     let x = this.getX(lon) + (2483 / 2) - 40;
     let y = this.getY(lat) - 420;
-    let r = cases * 0.0018;
+    let r = cases * 0.00018;
 
-    if (r > 65) { r = cases * 0.0002; }
+    if (r > 65) { r = 65; }
     if (selected) { 
       ctx.fillStyle = "#F9345E";
       ctx.globalAlpha = 0.57; 
