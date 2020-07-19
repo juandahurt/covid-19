@@ -53,6 +53,20 @@ class Map extends Component {
 
     ctx.clearRect(0, 0, this.canvas.current.width, this.canvas.current.height);
     this.drawWorldMap(); // It only draws the map when this function is called!
+    
+
+    console.time('forEach');
+    data.countries.forEach(c => {
+        let countryGeoData = this.state.data.find(element => { return element.country === c.CountryCode });
+      if (countryGeoData) {
+        let lat = countryGeoData.latitude;
+        let lon = countryGeoData.longitude;
+        this.drawCasesAt(lon, lat, c.TotalConfirmed, c.selected)
+      }
+    });
+    console.timeEnd('forEach'); //idk which is faster :c, perhaps this doesn't give u a warning
+
+    /* console.time('map');
     data.countries.map(c => {
       let countryGeoData = this.state.data.find(element => { return element.country === c.CountryCode });
       if (countryGeoData) {
@@ -61,6 +75,8 @@ class Map extends Component {
         this.drawCasesAt(lon, lat, c.TotalConfirmed, c.selected)
       }
     });
+    console.timeEnd('map'); */
+
   }
 
   drawCasesAt(lon, lat, cases, selected) {
