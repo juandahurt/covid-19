@@ -1,5 +1,9 @@
 # Covid-19 stats viewer
-This littile web page allows you to see how COVID-19 is spread around the world.
+This littile web page allows you to see how COVID-19 is spread around the world. The design was taken from the Dribbble community.
 
-## Screeshot
-[Screeshot]()
+## Preview
+![Preview](https://lh3.googleusercontent.com/wsR6GOpqPhTtEt4lVcuQLW4wIKmfBSgUj8Hw-jMFEEUwBztdosx5g4roA7sGRlmCKHwPR8Q-fZwlmuj9v92TehpB9Qr75XRf72YvemxvJZ70JpgZRhr4PbubBlJ-u-xVTaRFI1pLIE3iOxDskwt9fcnQEhy7ISXG4INVxcb8X7ENAVcMbW6Of2s4EZVWLCqjFhr1TLxsxjrv-CYvcxPdIjhW7KKcED3gGoWzeNQZ4M0UgjhkSoCg3F0v9VWLy4KaFVyFHnaDTSxSZjRejeikSjMjxYv53LLE6HAeRB2NcNZhusC5uRsVX3CPfgr8qoeYmHRKzwH071Jhg_1EDMd24uQhbjFDrFwkFi7twuK1qfkCvTscESapTsxi1QyOHnNVgSNOEBW_9n_EdBkIJdT8p-6S2bMCPcTsfDsinLDyGGfgqmbox8QZqfr65G3sSr_DijJaqQtrw7riwxda6Tw2Z9alVHVXzP1ueerHJNKPiwZVoY7tQD6fLpVtrEe0qulWb5RoNMtHJYHbUuTt2JSAVEqqbZADPDVMTOeryAOVTd7SS2zhXyz03m4YLBKECf5Cu38Vp25mYZrqvx_qOeN8aWGGfAH8umWATUDMe9PWRrZyB-5mrD62ZY9Ni5u0o_RxDoTPY6894R-beZbIMwd-LE5Gs16de-iqrY72QQO4VJsTrTE0iFyGHm8OtA8m4a-dJbQ=w2560-h1374-ft)
+
+```
+Feel free to create new pull requests!
+```

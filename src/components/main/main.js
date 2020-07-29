@@ -178,8 +178,8 @@ class Main extends Component {
         </div>
         <div className="text-center pt-4">
           <code className="text-muted" style={{color: 'black'}}>
-            Made with <FaHeart /> by <a href="https://github.com/juandahurt">juandahurt </a>
-            / Design taken from Dribbble
+            Made with <FaHeart /> by <a href="https://github.com/juandahurt">juandahurt</a>
+             / Design taken from Dribbble
           </code>
         </div>
       </div>
