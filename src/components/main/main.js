@@ -121,14 +121,26 @@ class Main extends Component {
                 if (!country.selected && country.hover) {
                   backgroundColor = '#f6f6f6';
                 }
+               
                 return <div className="row pt-1 mx-1 country"
+                  key={country.Country}
+                
                   onMouseEnter={() => {
-                    this.state.data.countries[index].hover = true; 
-                    this.forceUpdate();
+                    let dataCopy =  this.state.data; // deep copy
+                    dataCopy.countries[index].hover = true
+                    this.setState({
+                        data: dataCopy,
+                    })
+                    
+                    
                   }} 
                   onMouseLeave={() => {
-                    this.state.data.countries[index].hover = false; 
-                    this.forceUpdate();
+                    let dataCopy =  this.state.data; // deep copy
+                    dataCopy.countries[index].hover = false; //idk how to do a deep copy of this, but dont know if is necessary here
+                    this.setState({
+                        data: dataCopy,
+                    })
+                    //this.forceUpdate(); wtf is this?
                   }}
                   onClick={() => {this.countryOnClick(country, index)}} 
                   style={{
